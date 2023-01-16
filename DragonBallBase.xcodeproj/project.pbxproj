@@ -11,6 +11,7 @@
 		4AAB22F92975DB2E005A63F8 /* HerosListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAB22F82975DB2E005A63F8 /* HerosListTableViewController.swift */; };
 		4AAB22FB2975EF67005A63F8 /* HerosListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAB22FA2975EF67005A63F8 /* HerosListTableViewDataSource.swift */; };
 		4AAB22FD2975F75F005A63F8 /* HeroListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAB22FC2975F75F005A63F8 /* HeroListViewCell.swift */; };
+		4AAB23002975FE88005A63F8 /* HeroListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAB22FF2975FE88005A63F8 /* HeroListViewModel.swift */; };
 		5D78B9912970857C00274846 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D78B9902970857C00274846 /* AppDelegate.swift */; };
 		5D78B9932970857C00274846 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D78B9922970857C00274846 /* SceneDelegate.swift */; };
 		5D78B9952970857C00274846 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D78B9942970857C00274846 /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 		4AAB22F82975DB2E005A63F8 /* HerosListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerosListTableViewController.swift; sourceTree = "<group>"; };
 		4AAB22FA2975EF67005A63F8 /* HerosListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerosListTableViewDataSource.swift; sourceTree = "<group>"; };
 		4AAB22FC2975F75F005A63F8 /* HeroListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListViewCell.swift; sourceTree = "<group>"; };
+		4AAB22FF2975FE88005A63F8 /* HeroListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListViewModel.swift; sourceTree = "<group>"; };
 		5D78B98D2970857C00274846 /* DragonBallBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonBallBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D78B9902970857C00274846 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D78B9922970857C00274846 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4AAB22FE2975FE6A005A63F8 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				4AAB22FF2975FE88005A63F8 /* HeroListViewModel.swift */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
 		5D78B9842970857B00274846 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +80,7 @@
 		5D78B98F2970857C00274846 /* DragonBallBase */ = {
 			isa = PBXGroup;
 			children = (
+				4AAB22FE2975FE6A005A63F8 /* MVVM */,
 				5D78B9A6297088B300274846 /* Utils */,
 				5D78B9A52970888700274846 /* HeroesList */,
 				5D78B9A42970887000274846 /* HeroDetail */,
@@ -209,6 +220,7 @@
 			files = (
 				4AAB22FB2975EF67005A63F8 /* HerosListTableViewDataSource.swift in Sources */,
 				4AAB22F72975D5EA005A63F8 /* HerosListView.swift in Sources */,
+				4AAB23002975FE88005A63F8 /* HeroListViewModel.swift in Sources */,
 				4AAB22FD2975F75F005A63F8 /* HeroListViewCell.swift in Sources */,
 				5D78B9952970857C00274846 /* ViewController.swift in Sources */,
 				5D78B9912970857C00274846 /* AppDelegate.swift in Sources */,
