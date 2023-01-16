@@ -17,7 +17,7 @@ class HerosListTableViewDataSource: NSObject, UITableViewDataSource {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        }
+        } 
     }
     
     init(tableView: UITableView, heros: [HeroModel] = []) {
