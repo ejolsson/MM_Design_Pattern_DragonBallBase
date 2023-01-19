@@ -14,15 +14,15 @@ enum NetworkError: Error {
   case decodingFailed
   case unknown
 }
-
-final class ApiClient {
+// ✅ complete
+final class ApiClient { // this class automatically provided at class start
   
   private var token: String?
   
   convenience init(token: String) {
     self.init()
     self.token = token
-  }
+  } // complete
   
   func login(user: String, password: String, completion: @escaping (String?, Error?) -> Void) {
     guard let url = URL(string: "\(Constants.api_base_url)/auth/login") else {

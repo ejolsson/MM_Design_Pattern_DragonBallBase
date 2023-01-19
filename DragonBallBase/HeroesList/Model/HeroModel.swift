@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HeroModel: Decodable {
+struct HeroModel: Decodable { // automatically provided at start of class, quite simple
   let photo: String
   let id: String
   let favorite: Bool

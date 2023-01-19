@@ -7,30 +7,32 @@
 
 import Foundation
 import UIKit
-
-class HerosListView: UIView {
+// ✅ complete
+class HerosListView: UIView { // main view page, generic
     
-
-    let headerLabel = {
-       let label = UILabel()
-        
+    // CREATE HEADER VIEW
+    
+    let headerLabel = { // programmatic way to create UI, like a function but in a constant
+       let label = UILabel() // instantiate a label for specific use
+        // attribute the label below
         label.text = "MVC"
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textAlignment = .center
         //label.backgroundColor = .yellow
-        label.translatesAutoresizingMaskIntoConstraints = false // always use this!
-        // my code
-//        label.frame = CGRect(y: 150)
-        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false // always use this! don't let complier make guesses for us
         
-        return label
-    }()
+        return label // output label into memory
+    }() // using () to make it function like
+    
+    
+    // CREATE TABLE VIEW
     
     let herosTableView = {
-        let tableView = UITableView()
-        //tableView.backgroundColor = .blue
+        let tableView = UITableView() // instantiate for our use
+        //tableView.backgroundColor = .blue // used for demo & visibility
         tableView.register(HeroListViewCell.self, forCellReuseIdentifier: "HerosListViewCell")
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -38,10 +40,10 @@ class HerosListView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         // Create/add subviews
-        setUpViews()
-    } // required
+        setUpViews() // call subViews function created below
+    } // required to
     
-    required init?(coder: NSCoder) {
+    required init?(coder: NSCoder) { // ? optional b/c usually null
         fatalError("init(coder:) has not been implemented")
     } // required
     
@@ -49,10 +51,10 @@ class HerosListView: UIView {
         
         backgroundColor = .white
         
-        addSubview(headerLabel)
-        addSubview(herosTableView)
+        addSubview(headerLabel) // this brings the created headerLabel into view, addSubview is an extension of UIKit
+        addSubview(herosTableView) // this brings the created herosTableView into view
         
-        NSLayoutConstraint.activate([
+        NSLayoutConstraint.activate([ // array of constraints, otherwised built used Xcode UI
             headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: 60), // to superview
             headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16), // use negative to generate margin from the right side

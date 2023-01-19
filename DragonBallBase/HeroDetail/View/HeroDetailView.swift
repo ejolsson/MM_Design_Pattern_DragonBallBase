@@ -1,15 +1,14 @@
 //
-//  HeroListViewCell.swift
+//  HeroDetailView.swift
 //  DragonBallBase
 //
-//  Created by Eric Olsson on 1/16/23.
+//  Created by Eric Olsson on 1/19/23.
 //
 
 import Foundation
 import UIKit
-import Kingfisher
 // ✅ complete
-class HeroListViewCell: UITableViewCell {
+class HeroDetailView: UIView { // L14 1:30:55
     
     let photoImageView = {
        let imageView = UIImageView()
@@ -18,38 +17,40 @@ class HeroListViewCell: UITableViewCell {
     }()
     
     let nameLabel = {
-        let label = UILabel()
+       let label = UILabel()
         
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
-    }() // complete
+    }()
     
     let descriptionLabel = {
         let label = UILabel()
         label.textColor = .systemBlue
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false // always use!
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }() // complete
+    }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setUpViews()
-    } // complete
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    } // complete
+    }
     
     func setUpViews() {
         
+        backgroundColor = .blue
+        
         addSubview(photoImageView)
-        addSubview(nameLabel)
-        addSubview(descriptionLabel)
+//        addSubview(nameLabel)
+//        addSubview(descriptionLabel)
         
         NSLayoutConstraint.activate([
             
@@ -58,17 +59,18 @@ class HeroListViewCell: UITableViewCell {
             photoImageView.heightAnchor.constraint(equalToConstant: 80),
             photoImageView.widthAnchor.constraint(equalToConstant: 80),
         
-            nameLabel.topAnchor.constraint(equalTo: photoImageView.topAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 20),
-            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            nameLabel.heightAnchor.constraint(equalToConstant: 20),
-
-            descriptionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
-            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: 60),
+//            nameLabel.topAnchor.constraint(equalTo: photoImageView.topAnchor),
+//            nameLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 20),
+//            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+//            nameLabel.heightAnchor.constraint(equalToConstant: 20),
+//
+//            descriptionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+//            descriptionLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+//            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
+//            descriptionLabel.heightAnchor.constraint(equalToConstant: 60),
             
         ])
+        
         
     }
     
@@ -76,5 +78,5 @@ class HeroListViewCell: UITableViewCell {
         self.nameLabel.text = model.name
         self.descriptionLabel.text = model.description
         self.photoImageView.kf.setImage(with: URL(string: model.photo))
-    } // complete
+    }
 }

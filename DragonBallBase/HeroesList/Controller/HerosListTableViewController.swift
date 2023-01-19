@@ -4,49 +4,70 @@
 //
 //  Created by Eric Olsson on 1/16/23.
 //
-
+// ✅ complete
 import Foundation
 import UIKit
 
 class HerosListTableViewController: UIViewController {
-    
+    // paste class name above into Main.storyboard > Identity Inspector (⌘ + ⌥ + 4) > Custom Class > Class
     var mainView: HerosListView { self.view as! HerosListView }
     var heros: [HeroModel] = []
     
     var viewModel: HeroListViewModel? // just added this fm MvvM
     
     var tableViewDataSource: HerosListTableViewDataSource?
+    var tableViewDelegate: HerosListTableViewDelegate?
     
     override func loadView() {
         view = HerosListView()
 
         tableViewDataSource = HerosListTableViewDataSource (tableView: mainView.herosTableView)
         mainView.herosTableView.dataSource = tableViewDataSource
-    }
+        
+        tableViewDelegate = HerosListTableViewDelegate() // why is this placed here?
+        mainView.herosTableView.delegate = tableViewDelegate
+    } // complete
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+                
         viewModel = HeroListViewModel()
-        // preparing to receive data that comes from ViewModel
+        
+        setUpUpdateUI()
+        setUpTableDelegate()
+        getData()
+    }
+    
+    func setUpUpdateUI() {
+        // PREPARÁNDOME PARA RECIBIR LOS DATOS QUE VIENE DEL VIEWMODEL // preparing to receive data that comes from ViewModel
         viewModel?.updateUI = { [weak self] heros in
             self?.heros = heros
             self?.tableViewDataSource?.heros = heros
         }
-        viewModel?.fetchData()
     }
     
-//    func fetchData() {
-//        
-//        let myToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InByaXZhdGUifQ.eyJpZGVudGlmeSI6IjZDRDhGN0QwLTQwRTMtNEM3MS05M0JDLTlBMTlENTg2REI2QiIsImVtYWlsIjoiZWpvbHNzb24xQGdtYWlsLmNvbSIsImV4cGlyYXRpb24iOjY0MDkyMjExMjAwfQ.1ChGTrO9S8xWe6oouONVEq4VAnO0I87KTumgA_3JVwE" // ejolsson1 token
-//        
-//        let apiClient = ApiClient(token: myToken)
-//        
-//        apiClient.getHeroes { [weak self] heros, error in // always use weak self
-//            self?.heros = heros // need the ? when using weak self
-//            self?.tableViewDataSource?.heros = heros
-//        }
-//    } // ViewModel: Presentation logic
+    func getData() {
+        // CALL API TO GET HERO LIST
+        viewModel?.fetchData()
+    } // complete
+    
+    func setUpTableDelegate() {
+        tableViewDelegate?.didTapOnCell = { [weak self] index in // L14 1:39:30
+            
+            guard let datasource = self?.tableViewDataSource else {
+                return
+            }
+            
+            // Get the hero in the hero list according to the position index
+            let hero = datasource.heros[index] // L14 1:41:50
+            
+            // Prepare the viewcontroller that I want to present
+            let heroDetailViewController = HeroDetailViewController(heroDetailModel: hero)
+            
+            // Present the controller to show the details
+            
+            self?.present(heroDetailViewController, animated: true) // L14 1:44:10, present = modal popup, L14 2:03:10
+        }
+    }
     
 }
