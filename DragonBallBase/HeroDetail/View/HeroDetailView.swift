@@ -46,7 +46,7 @@ class HeroDetailView: UIView { // L14 1:30:55
     
     func setUpViews() {
         
-        backgroundColor = .blue
+        backgroundColor = .darkGray
         
         addSubview(photoImageView)
 //        addSubview(nameLabel)
