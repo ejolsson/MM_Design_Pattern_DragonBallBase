@@ -49,7 +49,7 @@ class HerosListTableViewController: UIViewController {
     func getData() {
         // CALL API TO GET HERO LIST
         viewModel?.fetchData()
-    } // complete
+    } // complete // don't need for LoginViewController?
     
     func setUpTableDelegate() {
         tableViewDelegate?.didTapOnCell = { [weak self] index in // L14 1:39:30
@@ -68,6 +68,6 @@ class HerosListTableViewController: UIViewController {
             
             self?.present(heroDetailViewController, animated: true) // L14 1:44:10, present = modal popup, L14 2:03:10
         }
-    }
+    } // don't need for LoginViewController
     
 }
