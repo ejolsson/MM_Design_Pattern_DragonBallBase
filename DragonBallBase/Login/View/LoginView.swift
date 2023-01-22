@@ -33,7 +33,6 @@ class LoginView: UIView {
         textField.backgroundColor = .systemGray5
         textField.layer.cornerRadius = 5
 //        textField.borderStyle = .line // used to troubleshoot size // https://stackoverflow.com/questions/1861527/uitextfield-border-color
-//        textField.layer.borderColor = [[UIColor( red: 240, green: 0, blue: 0, alpha: 1)]] as! CGColor
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
@@ -71,7 +70,6 @@ class LoginView: UIView {
         
         label.text = "" // "Error message section"
 //        label.layer.borderColor = UIColor.darkGray.cgColor // for troubleshooting... https://stackoverflow.com/questions/2311591/how-to-draw-border-around-a-uilabel
-//        label.layer.borderColor = .init(red: 0, green: 0, blue: 255, alpha: 0.5) // doesn't show...
 //        label.layer.borderWidth = 2.0
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 17)
@@ -163,6 +161,5 @@ class LoginView: UIView {
     
     func configure(_ model: ApiClient) {
         //self.emailTextField.text = model.login(user: String)
-        
     }
 }

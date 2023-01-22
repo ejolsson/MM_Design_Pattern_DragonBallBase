@@ -16,8 +16,6 @@ import Foundation
 //}
 
 class LoginViewModel: NSObject {
-          
-    // IMPORT LocalDataLayer from previous project
     
     private static let token = "token"
     private static let heros = "heros"

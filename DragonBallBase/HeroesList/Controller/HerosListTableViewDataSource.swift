@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-// ✅ complete
+
 class HerosListTableViewDataSource: NSObject, UITableViewDataSource {
   
     let tableView: UITableView
@@ -40,12 +40,4 @@ class HerosListTableViewDataSource: NSObject, UITableViewDataSource {
         return cell
     }
     
-//    func updateUI(heros: [HeroModel]) {
-//        self.heros = heros
-//        self.tableView.reloadData()
-//        
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData ()
-//        }
-//    }
 }

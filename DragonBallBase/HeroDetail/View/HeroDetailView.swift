@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-// ✅ complete
+
 class HeroDetailView: UIView { // L14 1:30:55
     
     let photoImageView = {

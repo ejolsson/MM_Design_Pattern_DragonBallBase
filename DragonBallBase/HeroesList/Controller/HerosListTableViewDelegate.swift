@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-// ✅ complete
+
 class HerosListTableViewDelegate: NSObject, UITableViewDelegate {
     
     var didTapOnCell: ((Int) -> Void)? // L14 1:37:40

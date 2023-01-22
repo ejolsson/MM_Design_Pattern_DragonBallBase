@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-// ✅ complete
+
 class HerosListView: UIView { // main view page, generic
     
     // CREATE HEADER VIEW
@@ -19,12 +19,10 @@ class HerosListView: UIView { // main view page, generic
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textAlignment = .center
-        //label.backgroundColor = .yellow
         label.translatesAutoresizingMaskIntoConstraints = false // always use this! don't let complier make guesses for us
         
         return label // output label into memory
     }() // using () to make it function like
-    
     
     // CREATE TABLE VIEW
     
@@ -41,11 +39,11 @@ class HerosListView: UIView { // main view page, generic
         super.init(frame: frame)
         // Create/add subviews
         setUpViews() // call subViews function created below
-    } // required to
+    }
     
     required init?(coder: NSCoder) { // ? optional b/c usually null
         fatalError("init(coder:) has not been implemented")
-    } // required
+    }
     
     func setUpViews() {
         

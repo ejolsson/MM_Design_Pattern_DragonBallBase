@@ -7,7 +7,6 @@
 
 import Foundation
 
- //⭐️ commenting out below enum, MOVED TO LoginViewModel
 enum NetworkError: Error {
   case malformedURL
   case noData
@@ -15,10 +14,10 @@ enum NetworkError: Error {
   case decodingFailed
   case unknown
 }
-// ✅ complete
-final class ApiClient { // this class automatically provided at class start
+
+final class ApiClient {
   
-    // 6 lines below migrate to LoginViewModel ???
+
   private var token: String?
 
   convenience init(token: String) {
@@ -26,9 +25,6 @@ final class ApiClient { // this class automatically provided at class start
     self.token = token
   } // complete
 
-    
-    
-    // func login migrated to LoginViewModel
   func login(user: String, password: String, completion: @escaping (String?, Error?) -> Void) {
     guard let url = URL(string: "\(Constants.api_base_url)/auth/login") else {
       completion(nil, NetworkError.malformedURL)
@@ -72,9 +68,6 @@ final class ApiClient { // this class automatically provided at class start
   }
   
     
-    
-    
-    // Migrate func below to LoginViewModel or HeroViewModel???
   func getHeroes(completion: @escaping ([HeroModel], Error?) -> Void) {
     guard let url = URL(string: "\(Constants.api_base_url)/heros/all"), let token = self.token else {
       completion([], NetworkError.malformedURL)
@@ -110,5 +103,4 @@ final class ApiClient { // this class automatically provided at class start
     task.resume()
   }
   
-
 }

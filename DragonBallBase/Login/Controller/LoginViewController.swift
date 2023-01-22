@@ -49,7 +49,6 @@ class LoginViewController: UIViewController {
         // https://stackoverflow.com/questions/24030348/how-to-create-a-button-programmatically
         print("Login button tapped\n")
         
-//        let loginViewModel = LoginViewModel() // ⚠️ was never used...
         let apiClient = ApiClient()
         
         // 1. Capture the text values entered in for the email and the password
@@ -72,7 +71,7 @@ class LoginViewController: UIViewController {
                 print("User: \(email)\n")
                 print("Token valid")
                 print(token)
-                // self.errorMessageLabel?.text = "Token: \(token)"
+                // self.errorMessageLabel?.text = token //"Token: \(token)" // response
                 
                 DispatchQueue.main.async {
                     UIApplication
@@ -81,11 +80,11 @@ class LoginViewController: UIViewController {
                         .compactMap{ ($0 as? UIWindowScene)?.keyWindow }
                         .first?
                         .rootViewController = HerosListTableViewController() // move to Heros list
+                    self.errorMessageLabel?.text = String("\(error))") // "Login error" // response
                 }
             } else {
                 print("Login error: ", error?.localizedDescription ?? "")
-                
-                self.errorMessageLabel?.text = "Login error"
+                // self.errorMessageLabel?.text = "sdf" // String("\(error))") // "Login error" // response
             }
         }
         

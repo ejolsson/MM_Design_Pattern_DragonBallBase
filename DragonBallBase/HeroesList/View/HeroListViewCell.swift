@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 import Kingfisher
-// ✅ complete
+
 class HeroListViewCell: UITableViewCell {
     
     let photoImageView = {
