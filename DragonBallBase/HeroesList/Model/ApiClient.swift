@@ -18,7 +18,7 @@ enum NetworkError: Error {
 // ✅ complete
 final class ApiClient { // this class automatically provided at class start
   
-    // 6 lines below migrated to LoginViewModel
+    // 6 lines below migrate to LoginViewModel ???
   private var token: String?
 
   convenience init(token: String) {
@@ -74,7 +74,7 @@ final class ApiClient { // this class automatically provided at class start
     
     
     
-    // Migrated func below to LoginViewModel
+    // Migrate func below to LoginViewModel or HeroViewModel???
   func getHeroes(completion: @escaping ([HeroModel], Error?) -> Void) {
     guard let url = URL(string: "\(Constants.api_base_url)/heros/all"), let token = self.token else {
       completion([], NetworkError.malformedURL)

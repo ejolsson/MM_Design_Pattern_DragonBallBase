@@ -10,7 +10,20 @@ import UIKit
 
 class LoginView: UIView {
     
-    // CONFIG USERNAME, PASSWORD, LOGIN BUTTON
+    // CONFIG HEADER, USERNAME, PASSWORD, LOGIN BUTTON
+    
+    let loginLabel = {
+        let label = UILabel()
+        
+        label.text = "Login"
+//        label.layer.borderColor = UIColor.darkGray.cgColor
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     let emailTextField = {
         let textField = UITextField()
         
@@ -45,8 +58,7 @@ class LoginView: UIView {
         button.layer.cornerRadius = 5
 //        button.buttonType = .roundedRect
         button.translatesAutoresizingMaskIntoConstraints = false
-//        button.layer.borderColor = .init(red: 0, green: 0, blue: 255, alpha: 1) // no dice
-        // loginButton.currentTitleColor = .white
+
         return button
     }()
     
@@ -55,8 +67,11 @@ class LoginView: UIView {
         
         label.text = "Error message section"
         label.layer.borderColor = UIColor.darkGray.cgColor // for troubleshooting... https://stackoverflow.com/questions/2311591/how-to-draw-border-around-a-uilabel
+//        label.layer.borderColor = .init(red: 0, green: 0, blue: 255, alpha: 0.5) // doesn't show...
+        label.layer.borderWidth = 2.0
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 17)
+        label.sizeToFit() // align text vertically to top of box // DOESN'T WORK ☹️
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -75,11 +90,15 @@ class LoginView: UIView {
         
         backgroundColor = .white
         
+        addSubview(loginLabel)
         addSubview(emailTextField)
         addSubview(passwordTextField)
         addSubview(loginButton)
         addSubview(errorMessageLabel)
         
+        //let xConstraint = NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: self.tableView, attribute: .centerX, multiplier: 1, constant: 0)
+        let xConstraint = NSLayoutConstraint(item: loginLabel, attribute: .centerX, relatedBy: .equal, toItem: loginLabel, attribute: .centerX, multiplier: 1, constant: 0)
+          
         NSLayoutConstraint.activate([
         
             // https://stackoverflow.com/questions/27624133/programmatically-add-centerx-centery-constraints
@@ -88,9 +107,19 @@ class LoginView: UIView {
             // emailTextField.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             // emailTextField.contentHorizontalAlignment,
             
-            emailTextField.topAnchor.constraint(equalTo: topAnchor, constant: 80),
-            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
+//            loginLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor), // doesn't do anything
+            xConstraint, // does nothing
+            
+            loginLabel.topAnchor.constraint(equalTo: topAnchor, constant: 80),
+            loginLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+//            loginLabel.leadingAnchor.constraint(equalTo: superview.center),
+            loginLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
+            loginLabel.heightAnchor.constraint(equalToConstant: 20),
+            loginLabel.widthAnchor.constraint(equalToConstant: 80),
+            
+            emailTextField.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 20),
+            emailTextField.leadingAnchor.constraint(equalTo: loginLabel.leadingAnchor),
+            emailTextField.trailingAnchor.constraint(equalTo: loginLabel.trailingAnchor, constant: -80),
             emailTextField.heightAnchor.constraint(equalToConstant: 20),
             emailTextField.widthAnchor.constraint(equalToConstant: 80),
             

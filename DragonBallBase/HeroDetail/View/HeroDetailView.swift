@@ -46,11 +46,11 @@ class HeroDetailView: UIView { // L14 1:30:55
     
     func setUpViews() {
         
-        backgroundColor = .darkGray
+        backgroundColor = .white //.darkGray
         
         addSubview(photoImageView)
-//        addSubview(nameLabel)
-//        addSubview(descriptionLabel)
+        addSubview(nameLabel)
+        addSubview(descriptionLabel)
         
         NSLayoutConstraint.activate([
             
@@ -59,15 +59,15 @@ class HeroDetailView: UIView { // L14 1:30:55
             photoImageView.heightAnchor.constraint(equalToConstant: 80),
             photoImageView.widthAnchor.constraint(equalToConstant: 80),
         
-//            nameLabel.topAnchor.constraint(equalTo: photoImageView.topAnchor),
-//            nameLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 20),
-//            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-//            nameLabel.heightAnchor.constraint(equalToConstant: 20),
-//
-//            descriptionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-//            descriptionLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
-//            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
-//            descriptionLabel.heightAnchor.constraint(equalToConstant: 60),
+            nameLabel.topAnchor.constraint(equalTo: photoImageView.topAnchor),
+            nameLabel.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 20),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            nameLabel.heightAnchor.constraint(equalToConstant: 20),
+
+            descriptionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
+            descriptionLabel.heightAnchor.constraint(equalToConstant: 240),
             
         ])
         

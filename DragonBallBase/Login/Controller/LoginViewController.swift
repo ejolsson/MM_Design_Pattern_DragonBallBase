@@ -9,20 +9,22 @@ import Foundation
 import UIKit
 
 class LoginViewController: UIViewController {
+    
     var mainView: LoginView { self.view as! LoginView } // not sure this was doing anything...
 
+    var loginLabel: UILabel?
     var emailTextField: UITextField?
     var passwordTextField: UITextField?
     var loginButton: UIButton?
     var errorMessageLabel: UILabel?
     
     var viewModel: LoginViewModel? // connect to MvvM?
-//    var viewModel: HeroListViewModel?
     
     override func loadView() {
         
         let loginView = LoginView()
         
+        loginLabel = loginView.loginLabel
         emailTextField = loginView.emailTextField
         passwordTextField = loginView.passwordTextField
         loginButton = loginView.loginButton
@@ -34,12 +36,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        viewModel = HeroListViewModel()
         viewModel = LoginViewModel()
         
         loginButton?.addTarget(self, action: #selector(didLoginTapped), for: .touchUpInside)
-        
-//        mainView.loginButton.addTarget(self, action: #selector(didLoginTapped), for: .touchUpInside)
     }
     
     @objc func didLoginTapped(sender: UIButton) {
@@ -61,8 +60,6 @@ class LoginViewController: UIViewController {
         }
         
         // 2. Call view model to perform the login call with the apiClient
-        // viewModel?.login(email: email, password: password)
-        
         apiClient.login(user: email, password: password) { token, error in
             if let token = token {
                 LoginViewModel.shared.save(token: token) // tokin persistence
@@ -88,19 +85,7 @@ class LoginViewController: UIViewController {
             }
         }
         
-        
-        
-//        loginViewModel.login(user: email, password: password, completion: (String?, Error?) -> Void) {
-//            guard let url = URL(string: "https://dragonball.keepcoding.education/api/auth/login") else {
-//                completion(nil, NetworkError.malformedURL)
-//                return
-//            }
-//        }
-        
         // 3. Show the token or the returned error
     }
-//    init(loginModel: ApiClient) {
-//        super.init(nibName: nil, bundle: nil)
-//        mainView.configure(loginModel)
-//    }
+
 }

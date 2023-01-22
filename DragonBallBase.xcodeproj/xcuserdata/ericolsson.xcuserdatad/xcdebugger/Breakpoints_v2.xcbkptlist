@@ -39,22 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9E61AC4E-DC55-433F-8100-D977B193C7CB"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DragonBallBase/MVVM/HeroListViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "fetchData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "CA2245F5-FBF5-4AE2-A07A-64DDEA4F055A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -62,8 +46,8 @@
             filePath = "DragonBallBase/MVVM/HeroListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "fetchData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -80,8 +64,56 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
             endingLineNumber = "40"
-            landmarkName = "Remove this token for login process"
-            landmarkType = "19">
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E8FE1130-AD8A-4676-B5E6-655DD947F6C5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DragonBallBase/MVVM/HeroListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E8FE1130-AD8A-4676-B5E6-655DD947F6C5 - 99570eee52423cc4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DragonBallBase.HeroListViewModel.fetchData() -&gt; ()"
+                  moduleName = "DragonBallBase"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ericolsson/Library/Mobile%20Documents/com~apple~CloudDocs/%F0%9F%91%A8%F0%9F%8F%BB%E2%80%8D%F0%9F%92%BBKeepCoding/Lesson%20Files/L13-17%20Patrones%20de%20Disen%CC%83o/DragonBallBase/DragonBallBase/MVVM/HeroListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "228">
+               </Location>
+               <Location
+                  uuid = "E8FE1130-AD8A-4676-B5E6-655DD947F6C5 - 3eaee4aa5935a44b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;DragonBallBase.HeroModel&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DragonBallBase.HeroListViewModel.fetchData() -&gt; ()"
+                  moduleName = "DragonBallBase"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ericolsson/Library/Mobile%20Documents/com~apple~CloudDocs/%F0%9F%91%A8%F0%9F%8F%BB%E2%80%8D%F0%9F%92%BBKeepCoding/Lesson%20Files/L13-17%20Patrones%20de%20Disen%CC%83o/DragonBallBase/DragonBallBase/MVVM/HeroListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
