@@ -23,9 +23,3 @@ That the student applies in a clear and concise way the different elements that 
 • Separation of responsibilities.
 • Code reusability.
 • Choice of names (variables, functions, etc.).
-
-TODO:
-- Add test button
-- Change label.text given button presses
-- Test cases
-- Comment clean up
