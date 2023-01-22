@@ -7,6 +7,7 @@
 
 import Foundation
 
+ //⭐️ commenting out below enum, MOVED TO LoginViewModel
 enum NetworkError: Error {
   case malformedURL
   case noData
@@ -17,87 +18,95 @@ enum NetworkError: Error {
 // ✅ complete
 final class ApiClient { // this class automatically provided at class start
   
+    // 6 lines below migrated to LoginViewModel
   private var token: String?
-  
+
   convenience init(token: String) {
     self.init()
     self.token = token
   } // complete
-  
+
+    
+    
+    // func login migrated to LoginViewModel
   func login(user: String, password: String, completion: @escaping (String?, Error?) -> Void) {
     guard let url = URL(string: "\(Constants.api_base_url)/auth/login") else {
       completion(nil, NetworkError.malformedURL)
       return
     }
-    
+
     let loginString = String(format: "%@:%@", user, password)
     let loginData = loginString.data(using: String.Encoding.utf8)!
     let base64LoginString = loginData.base64EncodedString()
-    
+
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = "POST"
     urlRequest.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-    
+
     let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
       guard error == nil else {
         completion(nil, NetworkError.unknown)
         return
       }
-      
+
       guard let data = data else {
         completion(nil, NetworkError.noData)
         return
       }
-      
+
       guard (response as? HTTPURLResponse)?.statusCode == 200 else {
         completion(nil, NetworkError.statusCode(code: (response as? HTTPURLResponse)?.statusCode))
         return
       }
-      
+
       guard let response = String(data: data, encoding: .utf8) else {
         completion(nil, NetworkError.decodingFailed)
         return
       }
-      
+
       self.token = response
       completion(response, nil)
     }
-    
+
     task.resume()
   }
   
+    
+    
+    
+    // Migrated func below to LoginViewModel
   func getHeroes(completion: @escaping ([HeroModel], Error?) -> Void) {
     guard let url = URL(string: "\(Constants.api_base_url)/heros/all"), let token = self.token else {
       completion([], NetworkError.malformedURL)
       return
     }
-    
+
     var urlComponents = URLComponents()
     urlComponents.queryItems = [URLQueryItem(name: "name", value: "")]
-    
+
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = "POST"
     urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
     urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
-    
+
     let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
       guard error == nil else {
         completion([], NetworkError.unknown)
         return
       }
-      
+
       guard let data = data else {
         completion([], NetworkError.noData)
         return
       }
-      
+
       guard let response = try? JSONDecoder().decode([HeroModel].self, from: data) else {
         completion([], NetworkError.decodingFailed)
         return
       }
       completion(response, nil)
     }
-    
+
     task.resume()
   }
   

@@ -17,6 +17,8 @@ class LoginView: UIView {
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 17)
         textField.placeholder = "email"
+        textField.borderStyle = .line // used to troubleshoot size // https://stackoverflow.com/questions/1861527/uitextfield-border-color
+//        textField.layer.borderColor = [[UIColor( red: 240, green: 0, blue: 0, alpha: 1)]] as! CGColor
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
@@ -28,6 +30,7 @@ class LoginView: UIView {
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 17)
         textField.placeholder = "password"
+        textField.borderStyle = .line // used to troubleshoot size
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         
@@ -38,7 +41,9 @@ class LoginView: UIView {
         let button = UIButton()
         
         button.setTitle("Login", for: .normal)
-        button.backgroundColor = .blue
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 5
+//        button.buttonType = .roundedRect
         button.translatesAutoresizingMaskIntoConstraints = false
 //        button.layer.borderColor = .init(red: 0, green: 0, blue: 255, alpha: 1) // no dice
         // loginButton.currentTitleColor = .white
@@ -48,7 +53,8 @@ class LoginView: UIView {
     let errorMessageLabel = {
         let label = UILabel()
         
-        label.text = "Hi"
+        label.text = "Error message section"
+        label.layer.borderColor = UIColor.darkGray.cgColor // for troubleshooting... https://stackoverflow.com/questions/2311591/how-to-draw-border-around-a-uilabel
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -84,19 +90,19 @@ class LoginView: UIView {
             
             emailTextField.topAnchor.constraint(equalTo: topAnchor, constant: 80),
             emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            //emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
             emailTextField.heightAnchor.constraint(equalToConstant: 20),
             emailTextField.widthAnchor.constraint(equalToConstant: 80),
             
             passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
             passwordTextField.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 60),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 20),
             
             loginButton.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor),
             loginButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor),
             loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
-            loginButton.heightAnchor.constraint(equalToConstant: 60),
+            loginButton.heightAnchor.constraint(equalToConstant: 20),
             
             errorMessageLabel.leadingAnchor.constraint(equalTo: loginButton.leadingAnchor),
             errorMessageLabel.trailingAnchor.constraint(equalTo: loginButton.trailingAnchor),

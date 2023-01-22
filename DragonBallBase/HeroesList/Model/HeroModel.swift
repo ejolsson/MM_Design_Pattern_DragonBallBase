@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HeroModel: Decodable { // automatically provided at start of class, quite simple
+struct HeroModel: Codable { // Was Decodable, updating to Codable to conform to token saving
   let photo: String
   let id: String
   let favorite: Bool
