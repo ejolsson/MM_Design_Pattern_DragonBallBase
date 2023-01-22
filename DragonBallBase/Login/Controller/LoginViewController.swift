@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
         // https://stackoverflow.com/questions/24030348/how-to-create-a-button-programmatically
         print("Login button tapped\n")
         
-        let loginViewModel = LoginViewModel()
+//        let loginViewModel = LoginViewModel() // ⚠️ was never used...
         let apiClient = ApiClient()
         
         // 1. Capture the text values entered in for the email and the password
@@ -65,7 +65,8 @@ class LoginViewController: UIViewController {
         
         apiClient.login(user: email, password: password) { token, error in
             if let token = token {
-                //apiClient.login.save(token: token)
+                LoginViewModel.shared.save(token: token) // tokin persistence
+                print("User: \(email)\n")
                 print("Token valid")
                 print(token)
                 
@@ -76,12 +77,18 @@ class LoginViewController: UIViewController {
                         .compactMap{ ($0 as? UIWindowScene)?.keyWindow }
                         .first?
                         .rootViewController = HerosListTableViewController()
+                    
+//                    self.errorMessageLabel?.text = "Login token = \(token)"
                 }
             } else {
                 print("Login error: ", error?.localizedDescription ?? "")
-
+                
+                // TODO: - Error message -
+//                self.errorMessageLabel?.text = "Login error"
             }
         }
+        
+        
         
 //        loginViewModel.login(user: email, password: password, completion: (String?, Error?) -> Void) {
 //            guard let url = URL(string: "https://dragonball.keepcoding.education/api/auth/login") else {

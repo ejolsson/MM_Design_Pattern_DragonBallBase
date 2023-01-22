@@ -15,7 +15,7 @@ class HerosListView: UIView { // main view page, generic
     let headerLabel = { // programmatic way to create UI, like a function but in a constant
        let label = UILabel() // instantiate a label for specific use
         // attribute the label below
-        label.text = "MVC"
+        label.text = "Heros"
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textAlignment = .center

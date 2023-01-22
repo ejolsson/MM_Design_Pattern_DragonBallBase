@@ -15,14 +15,20 @@ class HeroListViewModel: NSObject {
     }
     var updateUI: ((_ heros: [HeroModel]) -> Void)?
     
-    func fetchData() {
+    func fetchData() { // used in HerosListTableVC to build out Heros
         // TODO: - Remove this token for login process -
-        let myToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InByaXZhdGUifQ.eyJpZGVudGlmeSI6IjZDRDhGN0QwLTQwRTMtNEM3MS05M0JDLTlBMTlENTg2REI2QiIsImVtYWlsIjoiZWpvbHNzb24xQGdtYWlsLmNvbSIsImV4cGlyYXRpb24iOjY0MDkyMjExMjAwfQ.1ChGTrO9S8xWe6oouONVEq4VAnO0I87KTumgA_3JVwE" // copy-paste fm ejolsson1 token
+        
+        let myToken = LoginViewModel.shared.getToken() // get token from initial login session
+        
+//        let myToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InByaXZhdGUifQ.eyJpZGVudGlmeSI6IjZDRDhGN0QwLTQwRTMtNEM3MS05M0JDLTlBMTlENTg2REI2QiIsImVtYWlsIjoiZWpvbHNzb24xQGdtYWlsLmNvbSIsImV4cGlyYXRpb24iOjY0MDkyMjExMjAwfQ.1ChGTrO9S8xWe6oouONVEq4VAnO0I87KTumgA_3JVwE" // copy-paste fm ejolsson1 token
         
         let apiClient = ApiClient(token: myToken)
         
+        //let apiClient = ApiClient(token: ApiClient.login.token)
+        
+        // move to LoginViewController.didLoginTapped ???
         apiClient.getHeroes { [weak self] heros, error in // always use weak self
-            self?.updateUI?(heros)
+            self?.updateUI?(heros)  // builds out next view
         }
         
     } // ViewModel: Presentation logic

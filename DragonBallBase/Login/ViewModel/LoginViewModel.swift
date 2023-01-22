@@ -36,6 +36,7 @@ class LoginViewModel: NSObject {
     
     // migrate below code from HeroListViewModel...
     
+    // ⭐️ Below is NEVER / NOT used!!! Consider removing
     func fetchData() {
         // TODO: - Remove this token for login process -
         
@@ -46,6 +47,7 @@ class LoginViewModel: NSObject {
         // END HARD CODED SECTION
         
         let apiClient = ApiClient(token: myToken)
+        
         apiClient.getHeroes { [weak self] heros, error in // always use weak self
             self?.updateUI?(heros)
         } // was apiClient
@@ -103,7 +105,7 @@ class LoginViewModel: NSObject {
     private static let token = "token"
     private static let heros = "heros"
     
-//    static let shared = LocalDataLayer()
+    static let shared = LoginViewModel() // LocalDataLayer()
     
     func save(token: String) {
         return UserDefaults.standard.set(token, forKey: Self.token)

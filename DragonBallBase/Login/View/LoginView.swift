@@ -50,7 +50,7 @@ class LoginView: UIView {
         return button
     }()
     
-    let errorMessageLabel = {
+    var errorMessageLabel = {
         let label = UILabel()
         
         label.text = "Error message section"
