@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     var passwordTextField: UITextField?
     var loginButton: UIButton?
     var errorMessageLabel: UILabel?
+//    var testButton: UIButton?
     
     var viewModel: LoginViewModel? // connect to MvvM?
     
@@ -29,6 +30,7 @@ class LoginViewController: UIViewController {
         passwordTextField = loginView.passwordTextField
         loginButton = loginView.loginButton
         errorMessageLabel = loginView.errorMessageLabel
+//        testButton = loginView.testButton
         
         view = loginView // source of error? was = loginView
     }
@@ -39,8 +41,10 @@ class LoginViewController: UIViewController {
         viewModel = LoginViewModel()
         
         loginButton?.addTarget(self, action: #selector(didLoginTapped), for: .touchUpInside)
+        
+//        testButton?.addTarget(self, action: #selector(testTapped), for: .touchUpInside)
     }
-    
+        
     @objc func didLoginTapped(sender: UIButton) {
         // https://stackoverflow.com/questions/24030348/how-to-create-a-button-programmatically
         print("Login button tapped\n")
@@ -51,11 +55,13 @@ class LoginViewController: UIViewController {
         // 1. Capture the text values entered in for the email and the password
         guard let email = emailTextField?.text, !email.isEmpty else {
             print("No email provided\n")
+            errorMessageLabel?.text = "No email provided"
             return
         }
         
         guard let password = passwordTextField?.text, !password.isEmpty else {
             print("No password provided \n")
+            errorMessageLabel?.text = "No password provided"
             return
         }
         
@@ -66,6 +72,7 @@ class LoginViewController: UIViewController {
                 print("User: \(email)\n")
                 print("Token valid")
                 print(token)
+                // self.errorMessageLabel?.text = "Token: \(token)"
                 
                 DispatchQueue.main.async {
                     UIApplication
@@ -73,19 +80,21 @@ class LoginViewController: UIViewController {
                         .connectedScenes
                         .compactMap{ ($0 as? UIWindowScene)?.keyWindow }
                         .first?
-                        .rootViewController = HerosListTableViewController()
-                    
-//                    self.errorMessageLabel?.text = "Login token = \(token)"
+                        .rootViewController = HerosListTableViewController() // move to Heros list
                 }
             } else {
                 print("Login error: ", error?.localizedDescription ?? "")
                 
-                // TODO: - Error message -
-//                self.errorMessageLabel?.text = "Login error"
+                self.errorMessageLabel?.text = "Login error"
             }
         }
         
         // 3. Show the token or the returned error
     }
+    
+//    @objc func testTapped(sender: UIButton) {
+//        print("Test button tapped\n")
+//        errorMessageLabel?.text = "Hi"
+//    }
 
 }

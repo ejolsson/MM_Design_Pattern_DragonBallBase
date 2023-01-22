@@ -16,44 +16,7 @@ import Foundation
 //}
 
 class LoginViewModel: NSObject {
-    
-    // below lines (13-18 ported from ApiClient class
-//    var token: String? // should be private var
-//
-//    convenience init(token: String) {
-//      self.init()
-//      self.token = token
-//    }
-//
-//    static let shared = LoginViewModel() // don't know if I need this
-//
-    override init() {
-        // leave empty...
-    }
-    
-    // var updateUI: ((_ login: [LoginModel]) -> Void)?
-    var updateUI: ((_ heros: [HeroModel]) -> Void)?
-    
-    // migrate below code from HeroListViewModel...
-    
-    // ⭐️ Below is NEVER / NOT used!!! Consider removing
-    func fetchData() {
-        // TODO: - Remove this token for login process -
-        
-        // HARD CODED TOKEN...
-        let myToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InByaXZhdGUifQ.eyJpZGVudGlmeSI6IjZDRDhGN0QwLTQwRTMtNEM3MS05M0JDLTlBMTlENTg2REI2QiIsImVtYWlsIjoiZWpvbHNzb24xQGdtYWlsLmNvbSIsImV4cGlyYXRpb24iOjY0MDkyMjExMjAwfQ.1ChGTrO9S8xWe6oouONVEq4VAnO0I87KTumgA_3JVwE" // copy-paste fm ejolsson1 token
-        
-        // let apiClient = ApiClient(token: myToken)
-        // END HARD CODED SECTION
-        
-        let apiClient = ApiClient(token: myToken)
-        
-        apiClient.getHeroes { [weak self] heros, error in // always use weak self
-            self?.updateUI?(heros)
-        } // was apiClient
-        
-    }
-        
+          
     // IMPORT LocalDataLayer from previous project
     
     private static let token = "token"

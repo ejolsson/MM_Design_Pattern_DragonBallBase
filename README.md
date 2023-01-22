@@ -25,8 +25,7 @@ That the student applies in a clear and concise way the different elements that 
 • Choice of names (variables, functions, etc.).
 
 TODO:
-- Comment clean up
-- Add Label header
 - Add test button
 - Change label.text given button presses
 - Test cases
+- Comment clean up

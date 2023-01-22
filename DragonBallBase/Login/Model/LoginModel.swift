@@ -12,4 +12,5 @@ struct LoginModel: Decodable {
     let userPassword: String
     let loginButton: String
     let loginErrorMessage: String
+    let testButton: String
 }
