@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class HeroDetailView: UIView { // L14 1:30:55
+class HeroDetailView: UIView {
     
     let photoImageView = {
        let imageView = UIImageView()
@@ -46,7 +46,7 @@ class HeroDetailView: UIView { // L14 1:30:55
     
     func setUpViews() {
         
-        backgroundColor = .white //.darkGray
+        backgroundColor = .white
         
         addSubview(photoImageView)
         addSubview(nameLabel)
@@ -70,8 +70,6 @@ class HeroDetailView: UIView { // L14 1:30:55
             descriptionLabel.heightAnchor.constraint(equalToConstant: 240),
             
         ])
-        
-        
     }
     
     func configure(_ model: HeroModel) {

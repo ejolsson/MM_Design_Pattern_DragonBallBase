@@ -10,16 +10,15 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    var mainView: LoginView { self.view as! LoginView } // not sure this was doing anything...
+    var mainView: LoginView { self.view as! LoginView }
 
     var loginLabel: UILabel?
     var emailTextField: UITextField?
     var passwordTextField: UITextField?
     var loginButton: UIButton?
     var errorMessageLabel: UILabel?
-//    var testButton: UIButton?
     
-    var viewModel: LoginViewModel? // connect to MvvM?
+    var viewModel: LoginViewModel?
     
     override func loadView() {
         
@@ -30,9 +29,8 @@ class LoginViewController: UIViewController {
         passwordTextField = loginView.passwordTextField
         loginButton = loginView.loginButton
         errorMessageLabel = loginView.errorMessageLabel
-//        testButton = loginView.testButton
         
-        view = loginView // source of error? was = loginView
+        view = loginView
     }
     
     override func viewDidLoad() {
@@ -42,7 +40,6 @@ class LoginViewController: UIViewController {
         
         loginButton?.addTarget(self, action: #selector(didLoginTapped), for: .touchUpInside)
         
-//        testButton?.addTarget(self, action: #selector(testTapped), for: .touchUpInside)
     }
         
     @objc func didLoginTapped(sender: UIButton) {
@@ -71,7 +68,6 @@ class LoginViewController: UIViewController {
                 print("User: \(email)\n")
                 print("Token valid")
                 print(token)
-                // self.errorMessageLabel?.text = token //"Token: \(token)" // response
                 
                 DispatchQueue.main.async {
                     UIApplication
@@ -79,21 +75,12 @@ class LoginViewController: UIViewController {
                         .connectedScenes
                         .compactMap{ ($0 as? UIWindowScene)?.keyWindow }
                         .first?
-                        .rootViewController = HerosListTableViewController() // move to Heros list
-                    self.errorMessageLabel?.text = String("\(error))") // "Login error" // response
+                        .rootViewController = HerosListTableViewController()
+                    self.errorMessageLabel?.text = String("\(error))")
                 }
             } else {
                 print("Login error: ", error?.localizedDescription ?? "")
-                // self.errorMessageLabel?.text = "sdf" // String("\(error))") // "Login error" // response
             }
         }
-        
-        // 3. Show the token or the returned error
     }
-    
-//    @objc func testTapped(sender: UIButton) {
-//        print("Test button tapped\n")
-//        errorMessageLabel?.text = "Hi"
-//    }
-
 }

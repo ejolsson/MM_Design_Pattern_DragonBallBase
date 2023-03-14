@@ -30,11 +30,10 @@ class HerosListTableViewDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HerosListViewCell", for: indexPath) as! HeroListViewCell // as!... was just added
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HerosListViewCell", for: indexPath) as! HeroListViewCell
         
         let hero = heros[indexPath.row]
         
-        //cell.textLabel?.text = hero.name // it built when this wasn't commented out
         cell.configure(hero)
         
         return cell

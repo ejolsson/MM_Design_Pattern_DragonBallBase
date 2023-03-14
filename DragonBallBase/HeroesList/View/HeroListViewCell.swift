@@ -25,25 +25,25 @@ class HeroListViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
-    }() // complete
+    }() 
     
     let descriptionLabel = {
         let label = UILabel()
         label.textColor = .systemBlue
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false // always use!
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }() // complete
+    }() 
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpViews()
-    } // complete
+    } 
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    } // complete
+    } 
     
     func setUpViews() {
         
@@ -69,12 +69,11 @@ class HeroListViewCell: UITableViewCell {
             descriptionLabel.heightAnchor.constraint(equalToConstant: 60),
             
         ])
-        
     }
     
     func configure(_ model: HeroModel) {
         self.nameLabel.text = model.name
         self.descriptionLabel.text = model.description
         self.photoImageView.kf.setImage(with: URL(string: model.photo))
-    } // complete
+    } 
 }

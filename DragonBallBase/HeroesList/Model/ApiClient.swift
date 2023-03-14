@@ -23,7 +23,7 @@ final class ApiClient {
   convenience init(token: String) {
     self.init()
     self.token = token
-  } // complete
+  } 
 
   func login(user: String, password: String, completion: @escaping (String?, Error?) -> Void) {
     guard let url = URL(string: "\(Constants.api_base_url)/auth/login") else {
@@ -67,7 +67,6 @@ final class ApiClient {
     task.resume()
   }
   
-    
   func getHeroes(completion: @escaping ([HeroModel], Error?) -> Void) {
     guard let url = URL(string: "\(Constants.api_base_url)/heros/all"), let token = self.token else {
       completion([], NetworkError.malformedURL)
@@ -102,5 +101,4 @@ final class ApiClient {
 
     task.resume()
   }
-  
 }

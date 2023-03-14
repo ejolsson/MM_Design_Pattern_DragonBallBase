@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HeroModel: Codable { // Was Decodable, updating to Codable to conform to token saving
+struct HeroModel: Codable {
   let photo: String
   let id: String
   let favorite: Bool
