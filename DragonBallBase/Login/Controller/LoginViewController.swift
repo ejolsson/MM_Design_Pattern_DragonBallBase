@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     var loginButton: UIButton?
     var errorMessageLabel: UILabel?
     
-    var viewModel: LoginViewModel?
+    var loginViewModel: LoginViewModel?
     
     override func loadView() {
         
@@ -36,18 +36,14 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = LoginViewModel()
-        
+        loginViewModel = LoginViewModel()
         loginButton?.addTarget(self, action: #selector(didLoginTapped), for: .touchUpInside)
-        
     }
         
     @objc func didLoginTapped(sender: UIButton) {
         // https://stackoverflow.com/questions/24030348/how-to-create-a-button-programmatically
         print("Login button tapped\n")
-        
-        let apiClient = ApiClient()
-        
+                
         // 1. Capture the text values entered in for the email and the password
         guard let email = emailTextField?.text, !email.isEmpty else {
             print("No email provided\n")
@@ -61,26 +57,6 @@ class LoginViewController: UIViewController {
             return
         }
         
-        // 2. Call view model to perform the login call with the apiClient
-        apiClient.login(user: email, password: password) { token, error in
-            if let token = token {
-                LoginViewModel.shared.save(token: token) // tokin persistence
-                print("User: \(email)\n")
-                print("Token valid")
-                print(token)
-                
-                DispatchQueue.main.async {
-                    UIApplication
-                        .shared
-                        .connectedScenes
-                        .compactMap{ ($0 as? UIWindowScene)?.keyWindow }
-                        .first?
-                        .rootViewController = HerosListTableViewController()
-                    self.errorMessageLabel?.text = String("\(error))")
-                }
-            } else {
-                print("Login error: ", error?.localizedDescription ?? "")
-            }
-        }
+        loginViewModel?.login(email: email, password: password)
     }
 }
